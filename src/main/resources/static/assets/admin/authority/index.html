@@ -1,0 +1,24 @@
+
+<div ng-controller="authority-ctrl">
+    <table  style="width: 100%; border: 1px">
+        <thead>
+            <tr>
+                <th></th>
+                <th ng-repeat="role in roles">{{role.name}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="acc in admins">
+                <th>{{acc.fullname}}</th>
+                <th ng-repeat="role in roles">
+                    <input type="checkbox" ng-checked="authority_of(acc,role)"
+                    ng-click="authority_changed(acc,role)">
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+

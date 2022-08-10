@@ -1,0 +1,46 @@
+
+        <div class="card">
+            <div class="card-header">
+                Product List
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                            <th>Image</th>
+                            <th>Category</th>
+                            <th>Available?</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in items">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.price||number:2}}</td>
+                            <td>{{item.createDate | date: 'dd-MM-yyyy'}}</td>
+                            <td>{{item.image}}</td>
+                            <td>{{item.category.name}}</td>
+                            <td>{{item.available?'Yes':'No'}}</td>
+                            <td>
+                                <div class="btn-group btn-group-xs">
+                                    <button class="btn btn-warning">Delete</button>
+                                    <button class="btn btn-success">Detail</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-muted">
+                <button class="btn btn-outline-dark">Start</button>
+                <button class="btn btn-outline-dark">Prev</button>
+                <button class="btn btn-outline-dark">1 of 15</button>
+                <button class="btn btn-outline-dark">Next</button>
+                <button class="btn btn-outline-dark">Last</button>
+            </div>
+        </div>

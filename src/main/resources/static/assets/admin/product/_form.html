@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div class="card">
+            <div class="card-header">
+                <h1>Product edition</h1>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4 text-center">
+                        <label for="image">
+                            <img src="/assets/images/15tmag-japan-slide-HSYT-mobileMasterAt3x.jpg" style="max-width: 100%; height:400px;" alt="">
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <div>Name</div>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <div>Price</div>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <div>Image</div>
+                                <input type="file" id="image" class="form-control">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <div>Category</div>
+                                <select class="form-control">
+                                    <option value="id">Name</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <div>Date</div>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <div>Available?</div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="available" value="true">
+                                    <label class="form-check-label" for="">yes</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="available" value="false" >
+                                    <label class="form-check-label" for="">no</label>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button class="btn btn-primary">Create</button>
+                <button class="btn btn-success">Update</button>
+                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-outline-danger">Refresh</button>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<div xmlns:th="http://www.thymeleaf.org">
+  <div class="card mt-2">
+    <div class="card-header bg-primary">
+      Danh mục
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" th:each="c:${cates}">
+        <a  th:href="@{|/product/list?cid=${c.id}|}">
+          [[${c.name}]]
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

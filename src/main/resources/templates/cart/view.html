@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+    <body>
+        <main>
+            <div class="card text-center" th:fragment="shopping-cart">
+                <div class="card-header">
+                    SHOPPING CART
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Amount</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in cart.items">
+                            <th>{{item.id}}</th>
+                            <td>{{item.name}}</td>
+                            <td>${{item.price | number:2}}</td>
+                            <td><input ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1" style="width: 60px"></td>
+                            <td>${{item.price *item.qty | number:2}}</td>
+                            <td>
+                                <button ng-click="cart.remove(item.id)" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-muted">
+                    <button class="btn btn-danger" ng-click="cart.clear()">
+                        <i class="bi bi-trash3-fill"></i>
+                        Clear
+                    </button>
+                    <a th:href="@{/order/checkout}" class="btn btn-primary">
+                        <i class="bi bi-cart-check-fill"></i>
+                        Checkout
+                    </a>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
