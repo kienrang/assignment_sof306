@@ -14,7 +14,12 @@ app.config(function ($routeProvider) {
             templateUrl: "/assets/admin/authority/unauthorize.html",
             control: "authority-ctrl"
         })
+        .when("/account", {
+            templateUrl: "/assets/admin/accounts/index.html",
+            control: "acc-ctrl"
+        })
         .otherwise({
             template: "FPT Polytechnic"
+
         });
 });

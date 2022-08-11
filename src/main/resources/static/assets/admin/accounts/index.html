@@ -1,0 +1,76 @@
+<div ng-controller="acc-ctrl">
+    <div class="container m-2">
+        <button class="btn btn-outline-primary">Create</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr class="table-info">
+                <th scope="col">Username</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Avatar</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in listAcc">
+                <td>{{item.username}}</td>
+                <td>{{item.fullname}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.photo}}</td>
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <button ng-click="" class=" btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal1{{$index}}">Delete</button>
+                        <button class=" btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{$index}}"
+                            ng-click="edit(item)">Detail</button>
+                    </div>
+                    <div class="modal fade" id="exampleModal{{$index}}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <form action="" method="put">
+                                        <input type="text" name="" id="" class="form-control mt-2"
+                                            placeholder="Username" ng-model="form.username" disabled>
+                                        <input type=" password" name="" id="" class="form-control mt-2"
+                                            placeholder="Password">
+                                        <input type=" text" name="" id="" class="form-control mt-2"
+                                            placeholder="Fullname" ng-model="form.fullname">
+                                        <input type="text" name="" id="" class="form-control mt-2" placeholder="Email"
+                                            ng-model="form.email">
+                                        <input type="file" name="" id="" class="form-control mt-2" placeholder="">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" ng-click="update()" class="btn btn-outline-warning">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- modal delete -->
+                    <div class="modal fade" id="exampleModal1{{$index}}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    Bạn có muốn xóa {{item.username}} không?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">Không</button>
+                                    <button type="button" class="btn btn-outline-danger"
+                                        ng-click="delete(item)">Xóa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

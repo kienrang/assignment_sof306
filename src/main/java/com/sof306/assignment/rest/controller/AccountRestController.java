@@ -23,4 +23,22 @@ public class AccountRestController {
         }
         return accountService.findAll();
     }
+
+    @PostMapping
+    public Account insert(@RequestBody Account acc) {
+        return this.accountService.create(acc);
+    }
+
+    @PutMapping("/{username}")
+    public Account update(@PathVariable("String") String username, @RequestBody Account acc) {
+        System.out.println("Cũ ----------" + this.accountService.findById(username).toString());
+        System.out.println("Mới--------------" + acc.toString());
+
+        return null;
+    }
+
+    @DeleteMapping("{id}")
+    public int delete(@PathVariable("id") Integer id) {
+        return 1;
+    }
 }

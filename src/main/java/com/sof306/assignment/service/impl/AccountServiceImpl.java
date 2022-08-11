@@ -28,4 +28,14 @@ public class AccountServiceImpl implements AccountService {
     public List<Account> findAll() {
         return this.accountRepository.findAll();
     }
+
+    @Override
+    public Account create(Account acc) {
+        return this.accountRepository.save(acc);
+    }
+
+    @Override
+    public Account update(Account acc) {
+        return this.accountRepository.save(acc);
+    }
 }

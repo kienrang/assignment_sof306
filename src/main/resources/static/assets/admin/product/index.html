@@ -103,9 +103,9 @@
                                 <td>{{item.name}}</td>
                                 <td>{{item.price | number: 2}} $</td>
                                 <td>{{item.createDate | date: 'dd-MM-yyyy'}}</td>
-                                <td>{{item.image}}</td>
+                                <td>{{item.image}}</td>-
                                 <td>{{item.category.name}}</td>
-                                <td>{{item.available?'Yes':'No'}}</td>
+                                <td>{{item.available?'Yes':'No '}}</td>
                                 <td>
                                     <div class="btn-group btn-group-xs">
                                         <button ng-click="delete(item)" class="btn btn-warning">Delete</button>
