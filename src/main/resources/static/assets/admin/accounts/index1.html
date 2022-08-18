@@ -1,0 +1,125 @@
+<body>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#edition">EDITION</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#list">LIST</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content" ng-controller="acc-ctrl">
+        <div class="tab-pane container active" id="edition">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Account edition</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-4 text-center">
+                            <label for="image">
+                                <img ng-src="{{'/assets/images/avatar/'+ form.photo}}"
+                                    style="max-width: 100%; height:400px;" alt="">
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div>
+                                    <label for="">Username</label>
+                                    <input type="text" id="username" class="form-control" ng-model="form.username"
+                                        placeholder="Nhập tên tài khoản">
+                                </div>
+                                <div>
+                                    <label for="">Password</label>
+                                    <input type="password" class="form-control" ng-model="form.password"
+                                        placeholder="Nhập mật khẩu">
+                                </div>
+                                <div>
+                                    <label for="">Fullname</label>
+                                    <input type="text" class="form-control" ng-model="form.fullname"
+                                        placeholder="Nhập họ và tên">
+                                </div>
+                                <div>
+                                    <label for="">Email</label>
+                                    <input type="text" class="form-control" ng-model="form.email"
+                                        placeholder="Nhập địa chỉ email">
+                                </div>
+                                <div>
+                                    <label for="">Avatar</label>
+                                    <input type="file" ng-model="form.photo" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button ng-click="create()" class="btn btn-primary">Create</button>
+                    <button ng-click="update()" class="btn btn-success">Update</button>
+                    <button ng-click="delete(form)" class="btn btn-danger">Delete</button>
+                    <button ng-click="reset()" class="btn btn-outline-danger">Refresh</button>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane container fade" id="list">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Account list</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr class="table-info">
+                                <th scope="col">Username</th>
+                                <th scope="col">Fullname</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Avatar</th>
+                                <th scope="col">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in listAcc">
+                                <td>{{item.username}}</td>
+                                <td>{{item.fullname}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.photo}}</td>
+                                <td>
+                                    <div class="btn-group btn-group-xs">
+                                        <button ng-click="" class=" btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal1{{$index}}">Delete</button>
+                                        <button class=" btn btn-success" ng-click="edit(item)">Detail</button>
+                                    </div>
+                                    <!-- modal delete -->
+                                    <div class="modal fade" id="exampleModal1{{$index}}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    Bạn có muốn xóa {{item.username}} không?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal">Không</button>
+                                                    <button type="button" class="btn btn-outline-danger"
+                                                        ng-click="delete(item)">Xóa</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-muted">
+                    <button ng-click="pager.first()" class="btn btn-outline-dark">Start</button>
+                    <button ng-click="pager.prev()" class="btn btn-outline-dark">Prev</button>
+                    <button class="btn btn-outline-dark">{{pager.page +1}} of {{pager.count}}</button>
+                    <button ng-click="pager.next()" class="btn btn-outline-dark">Next</button>
+                    <button ng-click="pager.last()" class="btn btn-outline-dark">Last</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

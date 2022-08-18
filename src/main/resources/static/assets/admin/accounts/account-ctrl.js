@@ -5,7 +5,7 @@ app.controller("acc-ctrl", function ($scope, $http) {
     $scope.init = function () {
         $http.get("/rest/accounts").then(resp => {
             $scope.listAcc = resp.data;
-            // console.log(resp.data)
+            $scope.form.photo = 'upload.jpg'
         }).catch(err => {
             console.log(err)
         })
@@ -15,25 +15,28 @@ app.controller("acc-ctrl", function ($scope, $http) {
 
     $scope.create = function () {
         var item = angular.copy($scope.form);
-        $http.post(`/rest/acounts`, item).then(resp => {
+        $http.post(`/rest/accounts`, item).then(resp => {
             $scope.listAcc.push(resp.data);
             $scope.reset();
             alert("Thêm mới thành công")
         }).catch(err => {
             alert("Thêm mới không thành công")
-            console.log(err);
+            console.log("err");
         })
     }
 
     $scope.reset = function () {
         $scope.form = {
-
         }
+        document.getElementById('username').removeAttribute('disabled');
+        $scope.init();
     }
 
     $scope.edit = function (item) {
+        document.getElementById('username').setAttribute("disabled", true);
         $scope.form = angular.copy(item);
         console.log($scope.form);
+        $(".nav-tabs a:eq(0)").tab('show')
     }
 
     $scope.update = function () {

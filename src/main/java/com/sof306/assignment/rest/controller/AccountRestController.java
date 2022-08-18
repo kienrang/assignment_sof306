@@ -4,7 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.sof306.assignment.entity.Account;
+import com.sof306.assignment.entity.Authority;
+import com.sof306.assignment.entity.Role;
 import com.sof306.assignment.service.AccountService;
+import com.sof306.assignment.service.AuthorityService;
+import com.sof306.assignment.service.RoleService;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,20 +29,26 @@ public class AccountRestController {
     }
 
     @PostMapping
-    public Account insert(@RequestBody Account acc) {
-        return this.accountService.create(acc);
+    public Account insert(@RequestBody Account account) {
+        return this.accountService.create(account);
     }
 
-    @PutMapping("/{username}")
-    public Account update(@PathVariable("String") String username, @RequestBody Account acc) {
-        System.out.println("Cũ ----------" + this.accountService.findById(username).toString());
-        System.out.println("Mới--------------" + acc.toString());
-
-        return null;
+    @PutMapping("/{user}")
+    public Account update(@PathVariable("user") String username, @RequestBody Account account) {
+        Account acc = new Account();
+        acc.setUsername(account.getUsername());
+        acc.setEmail(account.getEmail());
+        acc.setFullname(account.getFullname());
+        acc.setPassword(account.getPassword());
+        acc.setPhoto(account.getPhoto());
+        acc.setOrders(account.getOrders());
+        acc.setAuthorities(account.getAuthorities());
+        return this.accountService.update(acc);
     }
 
-    @DeleteMapping("{id}")
-    public int delete(@PathVariable("id") Integer id) {
+    @DeleteMapping("/{user}")
+    public int delete(@PathVariable("user") String user) {
+        this.accountService.delete(this.accountService.findById(user));
         return 1;
     }
 }

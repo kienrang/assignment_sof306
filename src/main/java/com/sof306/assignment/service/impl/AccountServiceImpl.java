@@ -16,7 +16,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account findById(String username) {
-        return this.accountRepository.findById(username).get();
+        return this.accountRepository.getAccount(username);
     }
 
     @Override
@@ -37,5 +37,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account update(Account acc) {
         return this.accountRepository.save(acc);
+    }
+
+    @Override
+    public void delete(Account acc) {
+        this.accountRepository.delete(acc);
     }
 }

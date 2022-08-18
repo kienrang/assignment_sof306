@@ -15,7 +15,7 @@ app.config(function ($routeProvider) {
             control: "authority-ctrl"
         })
         .when("/account", {
-            templateUrl: "/assets/admin/accounts/index.html",
+            templateUrl: "/assets/admin/accounts/index1.html",
             control: "acc-ctrl"
         })
         .otherwise({
